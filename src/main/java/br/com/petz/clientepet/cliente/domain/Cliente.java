@@ -4,8 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,10 +24,12 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
 
-	@Id
+	@Id	
+	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private UUID idCliente;
 	
 	private String nomeCompleto;
+	@Email
 	private String email;
 	@NotBlank
 	private String celular;
